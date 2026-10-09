@@ -1,0 +1,28 @@
+Enum user_role {
+  admin [note: 'Full access']
+  editor
+  viewer
+}
+
+Enum status {
+  active
+  inactive
+  deleted
+}
+
+Table accounts {
+  id int [pk]
+  role user_role [not null]
+  status status [not null, default: 'active']
+  Note: '''
+    Core account table.
+    **Never hard-delete** rows — set status = deleted instead.
+  '''
+}
+
+Table sessions {
+  id bigint [pk, increment]
+  account_id int [not null, ref: > accounts.id]
+  token varchar(64) [unique, not null, note: 'SHA-256 hashed']
+  expires_at timestamp [not null]
+}

@@ -1,0 +1,11 @@
+Table `user` {
+  `id` int [pk]
+  `email` varchar(255) [unique]
+  `group` varchar(50)
+}
+
+Table `order` {
+  `id` int [pk]
+  `user_id` int [ref: > `user`.`id`]
+  `status` varchar(20)
+}

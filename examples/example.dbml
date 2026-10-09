@@ -1,0 +1,206 @@
+//@title DubDubco — Database Diagram
+//@area Identity #44508a
+//@area Merchant #3a6e6a
+//@area Tenant #7d3b3b
+//@area Billing #5b3f7a
+//@hub users #0000ff
+//@hub shops #ff0000
+
+TableGroup Identity__Users { users user_sessions }
+TableGroup Identity__Staff { staff_roles shop_staff staff_invitations }
+TableGroup Identity__Admins { platform_admins }
+TableGroup Merchant__Plans { plans plan_entitlements plan_prices }
+TableGroup Merchant__Addons { plan_addons plan_addon_prices }
+TableGroup Tenant__Core { shops shop_settings shop_notes }
+TableGroup Billing__Subscriptions { subscriptions plan_change_histories subscription_addons }
+TableGroup Billing__Invoices { invoices invoice_line_items transactions payment_retry_attempts }
+TableGroup Billing__Payments { payment_methods billing_usages shop_credits }
+
+Enum shop_status { pending_setup active frozen suspended cancelled }
+Enum subscription_status { trialing active past_due frozen cancelled paused }
+Enum invoice_status { draft open paid void uncollectible }
+Enum staff_type { staff collaborator }
+
+//@category important
+Table users {
+  id bigint [pk, increment]
+  uuid uuid [unique, not null]
+  email varchar(255) [unique, not null]
+  password_hash varchar(255) [not null]
+  Note: 'Merchant users. One user can belong to multiple shops via shop_staff.'
+}
+
+Table user_sessions {
+  id bigint [pk, increment]
+  user_id bigint [not null, ref: > users.id]
+  shop_id bigint [not null]
+  token_hash varchar(64) [unique, not null, note: 'SHA-256 of the raw bearer token']
+  expires_at timestamp [not null]
+}
+
+Table platform_admins {
+  id bigint [pk, increment]
+  email varchar(255) [unique, not null]
+  password_hash varchar(255) [not null]
+  full_name varchar(100) [not null]
+}
+
+Table staff_roles {
+  id bigint [pk, increment]
+  shop_id bigint [not null]
+  name varchar(100) [not null]
+}
+
+Table shop_staff {
+  id bigint [pk, increment]
+  shop_id bigint [not null]
+  user_id bigint [not null, ref: > users.id]
+  role_id bigint [ref: > staff_roles.id]
+  staff_type staff_type [not null]
+  is_owner boolean [not null, default: false]
+}
+
+Table staff_invitations {
+  id bigint [pk, increment]
+  shop_id bigint [not null]
+  email varchar(255) [not null]
+  token_hash varchar(64) [unique, not null]
+  expires_at timestamp [not null]
+}
+
+//@category reference_static
+Table plans {
+  id bigint [pk, increment]
+  slug varchar(100) [unique, not null]
+  name varchar(100) [not null]
+  is_deprecated boolean [not null, default: false]
+}
+
+Table plan_entitlements {
+  id bigint [pk, increment]
+  plan_id bigint [not null, ref: > plans.id]
+  key varchar(100) [not null]
+  value varchar(255) [not null]
+}
+
+Table plan_prices {
+  id bigint [pk, increment]
+  plan_id bigint [not null, ref: > plans.id]
+  currency char(3) [not null]
+  monthly_cents int [not null]
+  annual_cents int [not null]
+}
+
+Table plan_addons {
+  id bigint [pk, increment]
+  key varchar(100) [unique, not null]
+  name varchar(100) [not null]
+}
+
+Table plan_addon_prices {
+  id bigint [pk, increment]
+  plan_addon_id bigint [not null, ref: > plan_addons.id]
+  currency char(3) [not null]
+  monthly_cents int [not null]
+}
+
+//@category entity
+Table shops {
+  id bigint [pk, increment]
+  uuid uuid [unique, not null]
+  name varchar(255) [not null]
+  subdomain varchar(100) [unique, not null]
+  status shop_status [not null]
+  Note: 'The tenant. Every domain table uses shop_id for isolation.'
+}
+
+Table shop_settings {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  key varchar(100) [not null]
+  value text
+}
+
+Table shop_notes {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  body text [not null]
+  created_by bigint [ref: > platform_admins.id]
+}
+
+//@category important
+Table subscriptions {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  plan_id bigint [not null, ref: > plans.id]
+  status subscription_status [not null]
+  trial_ends_at timestamp
+  current_period_ends_at timestamp [not null]
+}
+
+Table plan_change_histories {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  from_plan_id bigint [ref: > plans.id]
+  to_plan_id bigint [not null, ref: > plans.id]
+}
+
+Table subscription_addons {
+  id bigint [pk, increment]
+  subscription_id bigint [not null, ref: > subscriptions.id]
+  plan_addon_id bigint [not null, ref: > plan_addons.id]
+  quantity int [not null, default: 1]
+}
+
+Table invoices {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  subscription_id bigint [ref: > subscriptions.id]
+  status invoice_status [not null]
+  total_cents int [not null]
+  due_at date
+}
+
+Table invoice_line_items {
+  id bigint [pk, increment]
+  invoice_id bigint [not null, ref: > invoices.id]
+  description varchar(255) [not null]
+  amount_cents int [not null]
+}
+
+Table transactions {
+  id bigint [pk, increment]
+  invoice_id bigint [not null, ref: > invoices.id]
+  amount_cents int [not null]
+  currency char(3) [not null]
+}
+
+Table payment_retry_attempts {
+  id bigint [pk, increment]
+  invoice_id bigint [not null, ref: > invoices.id]
+  attempt_number int [not null]
+  scheduled_at timestamp [not null]
+}
+
+Table payment_methods {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  is_default boolean [not null, default: false]
+  provider varchar(50) [not null]
+  last4 char(4)
+}
+
+Table billing_usages {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  metric varchar(100) [not null]
+  quantity bigint [not null, default: 0]
+}
+
+Table shop_credits {
+  id bigint [pk, increment]
+  shop_id bigint [not null, ref: > shops.id]
+  amount_cents int [not null, note: 'Positive = credit added, negative = credit used']
+  balance_after_cents int [not null]
+  Note: 'Append-only ledger. Never updated or deleted.'
+}

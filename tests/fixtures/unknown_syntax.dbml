@@ -1,0 +1,27 @@
+// Parser must not crash on unknown/future DBML syntax
+// It should skip and continue
+
+Records SomeRecord {
+  field1: string
+  field2: int
+}
+
+DiagramView MyView {
+  include: users
+}
+
+Table users {
+  id int [pk]
+  email varchar(255)
+  ~soft_delete_partial
+}
+
+TablePartial SoftDelete {
+  deleted_at timestamp
+}
+
+Table posts {
+  id int [pk]
+  user_id int [ref: > users.id]
+  title varchar(255)
+}

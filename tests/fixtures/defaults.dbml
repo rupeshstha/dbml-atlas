@@ -1,0 +1,9 @@
+Table configs {
+  id int [pk, increment]
+  key varchar(100) [unique, not null]
+  value_str varchar(500) [default: 'default_value']
+  value_int int [default: 0]
+  value_bool boolean [default: false]
+  value_expr varchar(100) [default: `gen_random_uuid()`]
+  is_active boolean [not null, default: true]
+}

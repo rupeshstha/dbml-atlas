@@ -1,0 +1,135 @@
+{
+  "title": "Multi-Area Schema",
+  "tables": {
+    "users": {
+      "name": "users",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "sessions": {
+      "name": "sessions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "roles": {
+      "name": "roles",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "user_roles": {
+      "name": "user_roles",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "products": {
+      "name": "products",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "categories": {
+      "name": "categories",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "stock_levels": {
+      "name": "stock_levels",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "warehouses": {
+      "name": "warehouses",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "invoices": {
+      "name": "invoices",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "invoice_lines": {
+      "name": "invoice_lines",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "payments": {
+      "name": "payments",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "refunds": {
+      "name": "refunds",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "user_roles",
+      "child_col": "user_id",
+      "parent": "roles",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

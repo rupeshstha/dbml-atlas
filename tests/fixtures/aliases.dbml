@@ -1,0 +1,11 @@
+Table users as U {
+  id int [pk]
+  email varchar(255) [unique]
+}
+
+Table posts as P {
+  id int [pk]
+  author_id int
+}
+
+Ref: P.author_id > U.id

@@ -1,0 +1,347 @@
+{
+  "title": "",
+  "tables": {
+    "users": {
+      "name": "users",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "products": {
+      "name": "products",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "warehouses": {
+      "name": "warehouses",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "carriers": {
+      "name": "carriers",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "coupons": {
+      "name": "coupons",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "payments": {
+      "name": "payments",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "orders": {
+      "name": "orders",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "status",
+          "type": "varchar(20)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "total_cents",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "order_items": {
+      "name": "order_items",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "order_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "product_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "qty",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "shipments": {
+      "name": "shipments",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "order_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "warehouse_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "carrier_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "order_coupons": {
+      "name": "order_coupons",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "coupon_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "order_payments": {
+      "name": "order_payments",
+      "columns": [
+        {
+          "name": "order_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "payment_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "orders",
+      "child_col": "user_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_items",
+      "child_col": "order_id",
+      "parent": "orders",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_items",
+      "child_col": "product_id",
+      "parent": "products",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "shipments",
+      "child_col": "order_id",
+      "parent": "orders",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "shipments",
+      "child_col": "warehouse_id",
+      "parent": "warehouses",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "shipments",
+      "child_col": "carrier_id",
+      "parent": "carriers",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_coupons",
+      "child_col": "order_id",
+      "parent": "orders",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_coupons",
+      "child_col": "coupon_id",
+      "parent": "coupons",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_payments",
+      "child_col": "order_id",
+      "parent": "orders",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "order_payments",
+      "child_col": "payment_id",
+      "parent": "payments",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

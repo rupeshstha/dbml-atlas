@@ -1,0 +1,4 @@
+// No TableGroup — all tables go to Ungrouped
+Table a { id int [pk] name varchar(100) }
+Table b { id int [pk] a_id int [ref: > a.id] value text }
+Table c { id int [pk] b_id int [ref: > b.id] }

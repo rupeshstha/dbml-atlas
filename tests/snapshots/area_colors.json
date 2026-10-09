@@ -1,0 +1,67 @@
+{
+  "title": "",
+  "tables": {
+    "orders": {
+      "name": "orders",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "line_items": {
+      "name": "line_items",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "tickets": {
+      "name": "tickets",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "ticket_comments": {
+      "name": "ticket_comments",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "events": {
+      "name": "events",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "page_views": {
+      "name": "page_views",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [],
+  "enums": {}
+}

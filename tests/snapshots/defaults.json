@@ -1,0 +1,93 @@
+{
+  "title": "",
+  "tables": {
+    "configs": {
+      "name": "configs",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "key",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "value_str",
+          "type": "varchar(500)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": "default_value",
+          "note": ""
+        },
+        {
+          "name": "value_int",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": "0",
+          "note": ""
+        },
+        {
+          "name": "value_bool",
+          "type": "boolean",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": "false",
+          "note": ""
+        },
+        {
+          "name": "value_expr",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": "gen_random_uuid()",
+          "note": ""
+        },
+        {
+          "name": "is_active",
+          "type": "boolean",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": "true",
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [],
+  "enums": {}
+}

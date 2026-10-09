@@ -1,0 +1,31 @@
+{
+  "title": "",
+  "tables": {
+    "empty_a": {
+      "name": "empty_a",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "empty_b": {
+      "name": "empty_b",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "empty_a",
+      "child_col": "id",
+      "parent": "empty_b",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

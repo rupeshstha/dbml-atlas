@@ -1,0 +1,55 @@
+//@title Blog Schema
+
+TableGroup Content {
+  posts
+  comments
+  tags
+  post_tags
+}
+
+TableGroup Users {
+  users
+  user_profiles
+}
+
+Table users {
+  id bigint [pk, increment]
+  email varchar(255) [unique, not null]
+  created_at timestamp [not null]
+}
+
+Table user_profiles {
+  id bigint [pk, increment]
+  user_id bigint [not null, ref: > users.id]
+  bio text
+  avatar_url varchar(500)
+}
+
+Table posts {
+  id bigint [pk, increment]
+  author_id bigint [not null, ref: > users.id]
+  title varchar(255) [not null]
+  body text [not null]
+  published_at timestamp
+  Note: 'One row per post. Soft-deleted via published_at = NULL.'
+}
+
+Table comments {
+  id bigint [pk, increment]
+  post_id bigint [not null, ref: > posts.id]
+  author_id bigint [not null, ref: > users.id]
+  body text [not null]
+}
+
+Table tags {
+  id bigint [pk, increment]
+  slug varchar(100) [unique, not null]
+  label varchar(100) [not null]
+}
+
+Table post_tags {
+  post_id bigint [not null, ref: > posts.id]
+  tag_id bigint [not null, ref: > tags.id]
+}
+
+Ref: post_tags.(post_id, tag_id) - posts.id

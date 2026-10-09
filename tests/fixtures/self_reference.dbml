@@ -1,0 +1,13 @@
+Table categories {
+  id int [pk, increment]
+  parent_id int [ref: > categories.id]
+  name varchar(100) [not null]
+  depth int [not null, default: 0]
+}
+
+Table employees {
+  id int [pk, increment]
+  manager_id int [ref: > employees.id]
+  name varchar(100) [not null]
+  department varchar(100)
+}

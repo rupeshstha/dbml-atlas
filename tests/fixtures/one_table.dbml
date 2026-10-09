@@ -1,0 +1,7 @@
+//@title Single Table
+Table settings {
+  id bigint [pk, increment]
+  key varchar(100) [unique, not null, note: 'Dotted key path e.g. "mail.from"']
+  value text
+  updated_at timestamp
+}

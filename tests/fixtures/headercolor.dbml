@@ -1,0 +1,18 @@
+// Tables with explicit headercolor (no category)
+Table admins [headercolor: #d35400] {
+  id int [pk]
+  email varchar(255)
+}
+
+Table system_logs [headercolor: #2c3e50] {
+  id bigint [pk, increment]
+  level varchar(10)
+  message text
+  created_at timestamp
+}
+
+Table feature_flags [headercolor: #8e44ad] {
+  id int [pk]
+  key varchar(100) [unique, not null]
+  enabled boolean [not null, default: false]
+}

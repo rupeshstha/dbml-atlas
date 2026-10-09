@@ -1,0 +1,13 @@
+// This fixture tests XSS escaping. All these strings must be escaped in output.
+Table "<script>alert(1)</script>" {
+  id int [pk]
+  "name\"quote" varchar(255) [note: '<img src=x onerror=alert(2)>']
+  Note: '''
+    Table note with <b>HTML</b> and "quotes" and 'apostrophes'.
+    Also: </script><script>alert(3)</script>
+  '''
+}
+
+TableGroup "Area & <Special>" {
+  "<script>alert(1)</script>"
+}

@@ -1,0 +1,14 @@
+//@area Sales #d35400
+//@area Support #2980b9
+//@area Analytics #27ae60
+
+TableGroup Sales { orders line_items }
+TableGroup Support { tickets ticket_comments }
+TableGroup Analytics { events page_views }
+
+Table orders { id int [pk] total int }
+Table line_items { id int [pk] order_id int [ref: > orders.id] }
+Table tickets { id int [pk] subject varchar(255) }
+Table ticket_comments { id int [pk] ticket_id int [ref: > tickets.id] body text }
+Table events { id int [pk] name varchar(100) created_at timestamp }
+Table page_views { id int [pk] event_id int [ref: > events.id] url varchar(500) }

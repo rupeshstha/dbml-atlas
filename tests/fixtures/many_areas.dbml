@@ -1,0 +1,21 @@
+//@title Multi-Area Schema
+
+TableGroup Identity__Users { users sessions }
+TableGroup Identity__Roles { roles user_roles }
+TableGroup Catalog__Products { products categories }
+TableGroup Catalog__Inventory { stock_levels warehouses }
+TableGroup Billing__Invoices { invoices invoice_lines }
+TableGroup Billing__Payments { payments refunds }
+
+Table users { id int [pk] email varchar(255) }
+Table sessions { id int [pk] user_id int [ref: > users.id] }
+Table roles { id int [pk] name varchar(50) }
+Table user_roles { user_id int [ref: > users.id] role_id int [ref: > roles.id] }
+Table products { id int [pk] name varchar(255) }
+Table categories { id int [pk] name varchar(100) }
+Table stock_levels { id int [pk] product_id int [ref: > products.id] qty int }
+Table warehouses { id int [pk] name varchar(100) }
+Table invoices { id int [pk] user_id int [ref: > users.id] total int }
+Table invoice_lines { id int [pk] invoice_id int [ref: > invoices.id] amount int }
+Table payments { id int [pk] invoice_id int [ref: > invoices.id] amount int }
+Table refunds { id int [pk] payment_id int [ref: > payments.id] amount int }

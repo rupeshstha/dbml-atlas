@@ -1,0 +1,28 @@
+Table students {
+  id bigint [pk, increment]
+  name varchar(100) [not null]
+}
+
+Table courses {
+  id bigint [pk, increment]
+  code varchar(20) [unique, not null]
+  title varchar(255) [not null]
+}
+
+Table enrollments {
+  student_id bigint [not null, ref: > students.id]
+  course_id bigint [not null, ref: > courses.id]
+  grade char(2)
+  enrolled_at date [not null]
+}
+
+Table instructors {
+  id bigint [pk, increment]
+  name varchar(100) [not null]
+}
+
+Table course_instructors {
+  course_id bigint [not null, ref: > courses.id]
+  instructor_id bigint [not null, ref: > instructors.id]
+  is_primary boolean [not null, default: false]
+}

@@ -1,0 +1,87 @@
+//@title E-Commerce Schema
+//@hub orders #0000ff
+//@hub products #ff0000
+
+TableGroup Catalog {
+  products
+  categories
+  product_categories
+  variants
+}
+
+TableGroup Orders {
+  orders
+  order_items
+}
+
+TableGroup Customers {
+  customers
+  addresses
+}
+
+Enum order_status {
+  pending
+  confirmed
+  shipped [note: 'Carrier picked up']
+  delivered
+  cancelled
+}
+
+//@category entity
+Table customers {
+  id bigint [pk, increment]
+  email varchar(255) [unique, not null]
+  name varchar(255) [not null]
+}
+
+Table addresses {
+  id bigint [pk, increment]
+  customer_id bigint [not null, ref: > customers.id]
+  line1 varchar(255)
+  city varchar(100)
+  country char(2)
+}
+
+//@category entity
+Table products {
+  id bigint [pk, increment]
+  sku varchar(100) [unique, not null]
+  name varchar(255) [not null]
+  price_cents int [not null]
+  Note: 'Price stored in cents (USD).'
+}
+
+Table categories {
+  id bigint [pk, increment]
+  parent_id bigint [ref: > categories.id]
+  name varchar(100) [not null]
+}
+
+Table product_categories {
+  product_id bigint [ref: > products.id]
+  category_id bigint [ref: > categories.id]
+}
+
+Table variants {
+  id bigint [pk, increment]
+  product_id bigint [not null, ref: > products.id]
+  sku varchar(100) [unique, not null]
+  price_cents int
+}
+
+//@category important
+Table orders {
+  id bigint [pk, increment]
+  customer_id bigint [not null, ref: > customers.id]
+  status order_status [not null]
+  total_cents int [not null]
+  created_at timestamp [not null]
+}
+
+Table order_items {
+  id bigint [pk, increment]
+  order_id bigint [not null, ref: > orders.id]
+  product_id bigint [not null, ref: > products.id]
+  quantity int [not null]
+  unit_price_cents int [not null]
+}
