@@ -1,0 +1,26 @@
+Table authors {
+  id int [pk]
+  name varchar(100)
+}
+
+Table books {
+  id int [pk]
+  author_id int
+  title varchar(255)
+}
+
+Table publishers {
+  id int [pk]
+  name varchar(100)
+}
+
+Table book_publishers {
+  book_id int
+  publisher_id int
+}
+
+Ref {
+  books.author_id > authors.id
+  book_publishers.book_id > books.id
+  book_publishers.publisher_id > publishers.id
+}

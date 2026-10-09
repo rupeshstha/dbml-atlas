@@ -1,0 +1,399 @@
+{
+  "title": "Laravel Style Schema",
+  "tables": {
+    "users": {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "email_verified_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "password",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "remember_token",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "password_reset_tokens": {
+      "name": "password_reset_tokens",
+      "columns": [
+        {
+          "name": "email",
+          "type": "varchar(255)",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "token",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "sessions": {
+      "name": "sessions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "varchar(255)",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "ip_address",
+          "type": "varchar(45)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user_agent",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "payload",
+          "type": "longtext",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "last_activity",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "jobs": {
+      "name": "jobs",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "queue",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "payload",
+          "type": "longtext",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "failed_jobs": {
+      "name": "failed_jobs",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "uuid",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "connection",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "queue",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "payload",
+          "type": "longtext",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "exception",
+          "type": "longtext",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "failed_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": "CURRENT_TIMESTAMP",
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "cache": {
+      "name": "cache",
+      "columns": [
+        {
+          "name": "key",
+          "type": "varchar(255)",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "value",
+          "type": "mediumtext",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "expiration",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "sessions",
+      "child_col": "user_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

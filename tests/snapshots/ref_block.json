@@ -1,0 +1,164 @@
+{
+  "title": "",
+  "tables": {
+    "authors": {
+      "name": "authors",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "books": {
+      "name": "books",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "author_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "title",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "publishers": {
+      "name": "publishers",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "book_publishers": {
+      "name": "book_publishers",
+      "columns": [
+        {
+          "name": "book_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "publisher_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "books",
+      "child_col": "author_id",
+      "parent": "authors",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "book_publishers",
+      "child_col": "book_id",
+      "parent": "books",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "book_publishers",
+      "child_col": "publisher_id",
+      "parent": "publishers",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

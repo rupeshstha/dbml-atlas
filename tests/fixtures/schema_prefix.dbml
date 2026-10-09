@@ -1,0 +1,17 @@
+Table public.users {
+  id int [pk]
+  email varchar(255)
+}
+
+Table public.posts {
+  id int [pk]
+  author_id int [ref: > public.users.id]
+  title varchar(255)
+}
+
+Table analytics.page_views {
+  id bigint [pk]
+  user_id int [ref: > public.users.id]
+  url varchar(500)
+  viewed_at timestamp
+}

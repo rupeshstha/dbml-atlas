@@ -1,0 +1,19 @@
+/.pytest_cache
+
+# AI agent context — private, never commit
+CLAUDE.md
+.claude/
+
+# Playwright session artifacts
+.playwright-mcp/
+
+# Build & package artefacts
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Editor
+.vscode/
+.idea/

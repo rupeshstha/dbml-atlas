@@ -1,0 +1,43 @@
+{
+  "title": "",
+  "tables": {
+    "a": {
+      "name": "a",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "b": {
+      "name": "b",
+      "columns": [],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "c": {
+      "name": "c",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [],
+  "enums": {}
+}

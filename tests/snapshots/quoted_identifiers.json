@@ -1,0 +1,88 @@
+{
+  "title": "",
+  "tables": {
+    "order": {
+      "name": "order",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user-id",
+          "type": "bigint",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "user": {
+      "name": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "order",
+      "child_col": "user",
+      "parent": ".",
+      "parent_col": "id",
+      "kind": "-"
+    }
+  ],
+  "enums": {}
+}

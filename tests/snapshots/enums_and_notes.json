@@ -1,0 +1,139 @@
+{
+  "title": "",
+  "tables": {
+    "accounts": {
+      "name": "accounts",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "role",
+          "type": "user_role",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "status",
+          "type": "status",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": "active",
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "Core account table.\n**Never hard-delete** rows — set status = deleted instead.",
+      "path": []
+    },
+    "sessions": {
+      "name": "sessions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "account_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "token",
+          "type": "varchar(64)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": "SHA-256 hashed"
+        },
+        {
+          "name": "expires_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "sessions",
+      "child_col": "account_id",
+      "parent": "accounts",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {
+    "user_role": [
+      [
+        "admin",
+        "Full access"
+      ],
+      [
+        "editor",
+        ""
+      ],
+      [
+        "viewer",
+        ""
+      ]
+    ],
+    "status": [
+      [
+        "active",
+        ""
+      ],
+      [
+        "inactive",
+        ""
+      ],
+      [
+        "deleted",
+        ""
+      ]
+    ]
+  }
+}

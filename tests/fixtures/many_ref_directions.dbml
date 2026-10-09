@@ -1,0 +1,12 @@
+Table a { id int [pk] }
+Table b { id int [pk] a_id int }
+Table c { id int [pk] a_id int }
+Table d { id int [pk] b_id int c_id int }
+
+// Many-to-one (>)
+Ref: b.a_id > a.id
+// One-to-many (<)
+Ref: c.a_id < a.id
+// Many-to-many (<>)
+Ref: d.b_id <> b.id
+Ref: d.c_id > c.id

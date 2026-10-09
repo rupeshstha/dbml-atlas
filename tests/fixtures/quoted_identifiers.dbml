@@ -1,0 +1,12 @@
+Table "order" {
+  "id" bigint [pk]
+  "user-id" bigint [not null]
+  "created_at" timestamp
+}
+
+Table "user" {
+  "id" bigint [pk]
+  "email" varchar(255) [unique]
+}
+
+Ref: "order"."user-id" > "user"."id"

@@ -1,0 +1,27 @@
+{
+  "title": "",
+  "tables": {
+    "<script>alert(1)</script>": {
+      "name": "<script>alert(1)</script>",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "Table note with <b>HTML</b> and \"quotes\" and 'apostrophes'.\nAlso: </script><script>alert(3)</script>",
+      "path": []
+    }
+  },
+  "refs": [],
+  "enums": {}
+}

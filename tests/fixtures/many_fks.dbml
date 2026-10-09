@@ -1,0 +1,39 @@
+// Hub table test — orders is referenced many times
+Table users { id int [pk] name varchar(100) }
+Table products { id int [pk] name varchar(255) }
+Table warehouses { id int [pk] name varchar(100) }
+Table carriers { id int [pk] name varchar(100) }
+Table coupons { id int [pk] code varchar(50) }
+Table payments { id int [pk] reference varchar(100) }
+
+//@hub orders
+Table orders {
+  id int [pk]
+  user_id int [not null, ref: > users.id]
+  status varchar(20) [not null]
+  total_cents int [not null]
+}
+
+Table order_items {
+  id int [pk]
+  order_id int [not null, ref: > orders.id]
+  product_id int [not null, ref: > products.id]
+  qty int [not null]
+}
+
+Table shipments {
+  id int [pk]
+  order_id int [not null, ref: > orders.id]
+  warehouse_id int [not null, ref: > warehouses.id]
+  carrier_id int [ref: > carriers.id]
+}
+
+Table order_coupons {
+  order_id int [not null, ref: > orders.id]
+  coupon_id int [not null, ref: > coupons.id]
+}
+
+Table order_payments {
+  order_id int [not null, ref: > orders.id]
+  payment_id int [not null, ref: > payments.id]
+}

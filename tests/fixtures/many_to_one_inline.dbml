@@ -1,0 +1,9 @@
+Table countries { code char(2) [pk] name varchar(100) }
+Table states { id int [pk] country_code char(2) [ref: > countries.code] name varchar(100) }
+Table cities { id int [pk] state_id int [ref: > states.id] name varchar(100) }
+Table addresses {
+  id int [pk]
+  city_id int [ref: > cities.id]
+  street varchar(255)
+  postal_code varchar(20)
+}

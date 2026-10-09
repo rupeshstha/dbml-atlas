@@ -1,0 +1,18 @@
+Table products {
+  id int [pk]
+  name varchar(255) [not null]
+  Note: '''
+    Core product record.
+
+    - `name` is the display label shown to shoppers.
+    - Price is **always** in cents.
+    - Never delete — soft-delete via `archived_at`.
+  '''
+}
+
+Table prices {
+  id int [pk]
+  product_id int [not null, ref: > products.id]
+  amount_cents int [not null, note: 'USD cents']
+  currency char(3) [not null, default: 'USD']
+}

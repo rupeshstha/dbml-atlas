@@ -1,0 +1,5 @@
+Table users {
+  id bigint [pk, increment]
+  email varchar(255) [unique, not null]
+  name varchar(100)
+}

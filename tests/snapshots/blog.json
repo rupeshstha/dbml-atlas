@@ -1,0 +1,342 @@
+{
+  "title": "Blog Schema",
+  "tables": {
+    "users": {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "created_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "user_profiles": {
+      "name": "user_profiles",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "bio",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "avatar_url",
+          "type": "varchar(500)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "posts": {
+      "name": "posts",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "author_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "title",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "published_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "One row per post. Soft-deleted via published_at = NULL.",
+      "path": []
+    },
+    "comments": {
+      "name": "comments",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "post_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "author_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "body",
+          "type": "text",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "tags": {
+      "name": "tags",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "slug",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "label",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "post_tags": {
+      "name": "post_tags",
+      "columns": [
+        {
+          "name": "post_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "tag_id",
+          "type": "bigint",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "post_tags",
+      "child_col": "post_id",
+      "parent": "posts",
+      "parent_col": "id",
+      "kind": "-"
+    },
+    {
+      "child": "user_profiles",
+      "child_col": "user_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "posts",
+      "child_col": "author_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "comments",
+      "child_col": "post_id",
+      "parent": "posts",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "comments",
+      "child_col": "author_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "post_tags",
+      "child_col": "post_id",
+      "parent": "posts",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "post_tags",
+      "child_col": "tag_id",
+      "parent": "tags",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

@@ -1,0 +1,60 @@
+name: dbml-atlas
+description: >
+  Render a DBML schema into an interactive HTML viewer and a static SVG poster.
+  Zero dependencies — Python standard library only.
+
+branding:
+  icon: database
+  color: blue
+
+inputs:
+  dbml:
+    description: Path to the DBML file (relative to repo root)
+    required: true
+  html:
+    description: Output path for the interactive HTML viewer
+    required: false
+    default: schema.html
+  svg:
+    description: Output path for the static SVG poster
+    required: false
+    default: schema.svg
+  title:
+    description: Override the diagram title
+    required: false
+  hubs:
+    description: Number of most-referenced tables to colour-code as hubs
+    required: false
+    default: "6"
+  area:
+    description: Render only tables in this area (v0.2)
+    required: false
+
+outputs:
+  html:
+    description: Path to the rendered HTML file
+    value: ${{ inputs.html }}
+  svg:
+    description: Path to the rendered SVG file
+    value: ${{ inputs.svg }}
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install dbml-atlas
+      shell: bash
+      run: pip install dbml-atlas==${{ env.DBML_ATLAS_VERSION || 'latest' }}
+
+    - name: Render
+      shell: bash
+      run: |
+        ARGS="${{ inputs.dbml }} -o ${{ inputs.html }} -o ${{ inputs.svg }}"
+        [ -n "${{ inputs.title }}" ] && ARGS="$ARGS --title '${{ inputs.title }}'"
+        [ -n "${{ inputs.hubs }}" ] && ARGS="$ARGS --hubs ${{ inputs.hubs }}"
+        [ -n "${{ inputs.area }}" ] && ARGS="$ARGS --area '${{ inputs.area }}'"
+        dbml-atlas $ARGS

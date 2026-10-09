@@ -1,0 +1,361 @@
+/* ── Design tokens ───────────────────────────────────────────────────────────── */
+
+:root {
+  --ink:     #1d2329;
+  --muted:   #5d6872;
+  --line:    #d5dade;
+  --bg:      #e6e9ec;
+  --accent:  #2f5f8a;
+  --chip:    #f1f3f5;
+  --bar-bg:  #fff;
+  --side-bg: #fff;
+  --tip-bg:  #1d2329;
+  --tip-fg:  #fff;
+}
+
+:root.dark {
+  --ink:     #e8eaed;
+  --muted:   #9aa0a6;
+  --line:    #3c4043;
+  --bg:      #1c1c1e;
+  --accent:  #8ab4f8;
+  --chip:    #2d2d2d;
+  --bar-bg:  #1e1e1e;
+  --side-bg: #1e1e1e;
+  --tip-bg:  #e8eaed;
+  --tip-fg:  #1d2329;
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────────── */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────────── */
+
+#bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--bar-bg);
+  border-bottom: 1px solid var(--line);
+  z-index: 6;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#bar h1 {
+  font-size: 14px;
+  margin: 0 6px 0 0;
+  font-weight: 650;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#q {
+  width: 220px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  background: var(--bar-bg);
+  color: var(--ink);
+  border-radius: 8px;
+  font: inherit;
+  cursor: text;
+}
+
+button {
+  font: inherit;
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  background: var(--bar-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+button:hover { background: var(--chip); }
+button.on    { background: var(--ink); color: var(--bar-bg); border-color: var(--ink); }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip i {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.sep {
+  width: 1px;
+  height: 24px;
+  background: var(--line);
+  flex: none;
+}
+
+#help { color: var(--muted); font-size: 12px; }
+
+/* ── Canvas ──────────────────────────────────────────────────────────────────── */
+
+#stage {
+  position: fixed;
+  inset: 50px 0 0 0;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+#stage.drag { cursor: grabbing; }
+
+#stage svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  user-select: none;
+}
+
+/* ── Tables & edges ──────────────────────────────────────────────────────────── */
+
+.tbl { cursor: pointer; }
+
+.tbl,
+.edge { transition: opacity .15s; }
+
+.tbl.dim  { opacity: .15; }
+.edge.dim { opacity: .05; }
+
+.tbl.sel > rect:first-of-type {
+  stroke: var(--accent);
+  stroke-width: 4;
+}
+
+.edge.hl { stroke-width: 2.4; }
+
+/* Focus mode: hide all non-highlighted edges (only when a table is selected) */
+svg.focus:has(.tbl.sel) .edge:not(.hl) { opacity: 0; }
+
+/* ── Side panel ──────────────────────────────────────────────────────────────── */
+
+#side {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  width: 440px;
+  max-width: 100%;
+  background: var(--side-bg);
+  border-left: 1px solid var(--line);
+  overflow: auto;
+  transform: translateX(102%);
+  transition: transform .18s;
+  z-index: 5;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, .06);
+}
+
+#side.open { transform: none; }
+
+#side header {
+  position: sticky;
+  top: 0;
+  background: var(--side-bg);
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+#side h2 {
+  margin: 0;
+  font-size: 18px;
+  word-break: break-all;
+}
+
+#side .crumbs {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Close and copy-link buttons in panel header */
+#side .x {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#side .copylink {
+  position: absolute;
+  right: 38px;
+  top: 10px;
+  font-size: 11px;
+  padding: 3px 7px;
+}
+
+#side section {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+#side h3 {
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+/* ── Side panel content ──────────────────────────────────────────────────────── */
+
+.note { white-space: normal; }
+
+.note code,
+.col-note code {
+  background: var(--chip);
+  padding: 0 4px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.cat {
+  display: inline-block;
+  padding: 1px 8px;
+  border: 1px solid #0003;
+  border-radius: 10px;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.col {
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+}
+
+.col:first-child { border-top: 0; }
+
+.col-top {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.col b {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12.5px;
+}
+
+.col .ty {
+  color: var(--accent);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 5px;
+  border-radius: 4px;
+  background: var(--chip);
+  color: var(--ink);
+}
+
+.tag.pk { background: #fff2a8; color: #333; }
+.tag.fk { background: #dde8ff; color: #333; }
+.tag.nn { color: #c00; }
+
+.col-note {
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.none { color: #a0a8b0; font-style: italic; }
+
+a.go {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+a.go:hover { text-decoration: underline; }
+
+ul.refs {
+  margin: 0;
+  padding-left: 16px;
+}
+
+/* ── Hover tooltip ───────────────────────────────────────────────────────────── */
+
+#tip {
+  position: fixed;
+  pointer-events: none;
+  background: var(--tip-bg);
+  color: var(--tip-fg);
+  padding: 7px 9px;
+  border-radius: 7px;
+  max-width: 340px;
+  font-size: 12px;
+  display: none;
+  z-index: 9;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+}
+
+#tip .t {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-weight: 600;
+}
+
+#tip .m { opacity: .75; }
+
+/* ── Minimap ─────────────────────────────────────────────────────────────────── */
+
+#minimap {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  width: 180px;
+  height: 110px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bar-bg);
+  overflow: hidden;
+  opacity: .85;
+  z-index: 4;
+  pointer-events: none;
+}
+
+#minimap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#minimap .vp {
+  fill: var(--accent);
+  fill-opacity: .15;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+@media (max-width: 700px) {
+  #help,
+  #bar h1 { display: none; }
+  #q { width: 150px; }
+  #minimap { display: none; }
+}

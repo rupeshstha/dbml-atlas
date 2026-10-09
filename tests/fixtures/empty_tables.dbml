@@ -1,0 +1,4 @@
+// Tables with no columns — parser must not crash
+Table empty_a {}
+Table empty_b {}
+Ref: empty_a.id > empty_b.id

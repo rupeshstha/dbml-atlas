@@ -1,0 +1,99 @@
+{
+  "title": "",
+  "tables": {
+    "products": {
+      "name": "products",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "Core product record.\n\n- `name` is the display label shown to shoppers.\n- Price is **always** in cents.\n- Never delete — soft-delete via `archived_at`.",
+      "path": []
+    },
+    "prices": {
+      "name": "prices",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "product_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "amount_cents",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": "USD cents"
+        },
+        {
+          "name": "currency",
+          "type": "char(3)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": "USD",
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "prices",
+      "child_col": "product_id",
+      "parent": "products",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

@@ -1,0 +1,137 @@
+{
+  "title": "",
+  "tables": {
+    "memberships": {
+      "name": "memberships",
+      "columns": [
+        {
+          "name": "org_id",
+          "type": "bigint",
+          "pk": true,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "user_id",
+          "type": "bigint",
+          "pk": true,
+          "fk": true,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "role",
+          "type": "varchar(50)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "joined_at",
+          "type": "timestamp",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "organizations": {
+      "name": "organizations",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "users": {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "email",
+          "type": "varchar(255)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": true,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "memberships",
+      "child_col": "org_id",
+      "parent": "organizations",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "memberships",
+      "child_col": "user_id",
+      "parent": "users",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}

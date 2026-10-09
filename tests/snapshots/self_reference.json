@@ -1,0 +1,128 @@
+{
+  "title": "",
+  "tables": {
+    "categories": {
+      "name": "categories",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "parent_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "depth",
+          "type": "int",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": "0",
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    },
+    "employees": {
+      "name": "employees",
+      "columns": [
+        {
+          "name": "id",
+          "type": "int",
+          "pk": true,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": true,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "manager_id",
+          "type": "int",
+          "pk": false,
+          "fk": true,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "name",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": true,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        },
+        {
+          "name": "department",
+          "type": "varchar(100)",
+          "pk": false,
+          "fk": false,
+          "not_null": false,
+          "unique": false,
+          "increment": false,
+          "default": null,
+          "note": ""
+        }
+      ],
+      "category": null,
+      "is_new": false,
+      "note": "",
+      "path": []
+    }
+  },
+  "refs": [
+    {
+      "child": "categories",
+      "child_col": "parent_id",
+      "parent": "categories",
+      "parent_col": "id",
+      "kind": ">"
+    },
+    {
+      "child": "employees",
+      "child_col": "manager_id",
+      "parent": "employees",
+      "parent_col": "id",
+      "kind": ">"
+    }
+  ],
+  "enums": {}
+}
