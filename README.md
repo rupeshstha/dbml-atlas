@@ -4,7 +4,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/dbml-atlas)](https://pypi.org/project/dbml-atlas/)
 [![Python](https://img.shields.io/pypi/pyversions/dbml-atlas)](https://pypi.org/project/dbml-atlas/)
-[![CI](https://github.com/rupeshstha/dbml-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/rupeshstha/dbml-viewer/actions/workflows/ci.yml)
+[![CI](https://github.com/rupeshstha/dbml-atlas/actions/workflows/ci.yml/badge.svg)](https://github.com/rupeshstha/dbml-atlas/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 ```
@@ -13,7 +13,7 @@ dbml-atlas schema.dbml
 # → schema.svg    print-ready poster: nested areas, colour-coded FK lines, legend
 ```
 
-> **Live demo:** [rupeshstha.github.io/dbml-viewer](https://rupeshstha.github.io/dbml-viewer) — 200+ table real-world schema, loads offline.
+> **Live demo:** [rupeshstha.github.io/dbml-atlas](https://rupeshstha.github.io/dbml-atlas)
 
 ---
 
@@ -71,7 +71,7 @@ dbml-atlas schema.dbml
 Or without installing:
 
 ```bash
-curl -O https://raw.githubusercontent.com/rupeshstha/dbml-viewer/main/dbml_atlas.py
+curl -O https://raw.githubusercontent.com/rupeshstha/dbml-atlas/main/dbml_atlas.py
 python dbml_atlas.py schema.dbml
 ```
 
@@ -99,7 +99,7 @@ pip install "dbml-atlas[pdf,postgres,mysql]"  # everything
 Download `dbml_atlas.py` and run it directly — no pip, no virtualenv, no dependencies:
 
 ```bash
-curl -O https://raw.githubusercontent.com/rupeshstha/dbml-viewer/main/dbml_atlas.py
+curl -O https://raw.githubusercontent.com/rupeshstha/dbml-atlas/main/dbml_atlas.py
 python dbml_atlas.py schema.dbml
 ```
 
@@ -194,7 +194,7 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
-      - uses: rupeshstha/dbml-viewer@v1
+      - uses: rupeshstha/dbml-atlas@v1
         with:
           dbml: schema.dbml
           html: docs/index.html
@@ -263,7 +263,7 @@ Unknown blocks are skipped with a warning on stderr — the render always contin
 ## Development
 
 ```bash
-git clone https://github.com/rupeshstha/dbml-viewer
+git clone https://github.com/rupeshstha/dbml-atlas
 cd dbml-atlas
 pip install -e ".[dev]"
 
