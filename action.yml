@@ -48,7 +48,12 @@ runs:
 
     - name: Install dbml-atlas
       shell: bash
-      run: pip install dbml-atlas==${{ env.DBML_ATLAS_VERSION || 'latest' }}
+      run: |
+        if [ -n "${{ env.DBML_ATLAS_VERSION }}" ]; then
+          pip install dbml-atlas==${{ env.DBML_ATLAS_VERSION }}
+        else
+          pip install dbml-atlas
+        fi
 
     - name: Render
       shell: bash
