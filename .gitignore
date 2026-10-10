@@ -7,6 +7,10 @@ CLAUDE.md
 # Playwright session artifacts
 .playwright-mcp/
 
+# Generated diagram outputs (examples/ should only contain source .dbml files)
+examples/*.html
+examples/*.svg
+
 # Build & package artefacts
 dist/
 *.egg-info/
