@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "dbml-atlas"
-version = "0.2.0"
+version = "1.2.0"
 description = "Turn your DBML schema into a printable database poster (SVG/PDF) and an interactive canvas viewer (HTML). Zero dependencies."
 readme = "README.md"
 license = { text = "MIT" }

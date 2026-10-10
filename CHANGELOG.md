@@ -5,6 +5,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [1.2.0] — 2026-10-10
+
+### Changed
+- First public open-source release on PyPI and GitHub
+
 ## [0.2.0] — 2025-01-15
 
 ### Added
