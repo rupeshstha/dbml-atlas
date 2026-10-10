@@ -311,8 +311,7 @@ dbml-atlas/
 │   ├── test_layout.py
 │   └── test_render.py
 ├── examples/
-│   ├── example.dbml         minimal example with directives
-│   └── dubdubco.dbml        large real-world schema (200+ tables)
+│   └── example.dbml         minimal example with directives
 ├── action.yml               reusable GitHub Action
 ├── pyproject.toml
 ├── CHANGELOG.md
