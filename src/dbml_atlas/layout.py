@@ -4,7 +4,7 @@ import math
 from collections import OrderedDict
 
 from .model import Schema, Table
-from .style import SERIF, SANS, text_w, shade, mix, luminance, CATEGORIES
+from .style import CATEGORIES, shade, text_w
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Sizing constants

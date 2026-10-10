@@ -64,7 +64,7 @@ def _rgb(h: str) -> tuple[int, int, int]:
 
 def mix(h: str, other: str = "#ffffff", t: float = 0.5) -> str:
     a, b = _rgb(h), _rgb(other)
-    return "#%02x%02x%02x" % tuple(round(x + (y - x) * t) for x, y in zip(a, b))
+    return "#{:02x}{:02x}{:02x}".format(*tuple(round(x + (y - x) * t) for x, y in zip(a, b)))
 
 
 def luminance(h: str) -> float:

@@ -4,13 +4,31 @@ import html
 import math
 
 from .layout import (
-    BADGE_FS, HEAD_H, HEAD_FS, LEG_ROW, NAME_FS, NN_FS, PADX, ROW_H,
-    Box, badges, legend_columns, legend_label, measure_legend,
+    BADGE_FS,
+    HEAD_FS,
+    HEAD_H,
+    LEG_ROW,
+    NAME_FS,
+    NN_FS,
+    PADX,
+    ROW_H,
+    Box,
+    badges,
+    legend_columns,
+    legend_label,
 )
 from .model import Schema
 from .style import (
-    CATEGORIES, DEFAULT_EDGE, NOTNULL_COLOR, SANS, SERIF, TYPE_COLOR,
-    luminance, mix, shade, text_w,
+    CATEGORIES,
+    DEFAULT_EDGE,
+    NOTNULL_COLOR,
+    SANS,
+    SERIF,
+    TYPE_COLOR,
+    luminance,
+    mix,
+    shade,
+    text_w,
 )
 
 
