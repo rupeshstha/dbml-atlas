@@ -15,6 +15,25 @@ dbml-atlas schema.dbml
 
 > **Live demo:** [rupeshstha.github.io/dbml-atlas](https://rupeshstha.github.io/dbml-atlas)
 
+![dbml-atlas demo](docs/demo.gif)
+
+<table>
+<tr>
+<td><img src="docs/screenshot_light.png" alt="Light mode overview"/></td>
+<td><img src="docs/screenshot_table.png" alt="Table selected with side panel"/></td>
+</tr>
+<tr>
+<td align="center"><em>Poster view — nested areas, FK bus lanes, legend</em></td>
+<td align="center"><em>Click any table → columns, notes, FK links</em></td>
+</tr>
+<tr>
+<td><img src="docs/screenshot_dark.png" alt="Dark mode"/></td>
+</tr>
+<tr>
+<td align="center"><em>Dark mode toolbar (poster stays print-ready)</em></td>
+</tr>
+</table>
+
 ---
 
 ## Why dbml-atlas?
