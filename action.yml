@@ -1,7 +1,7 @@
 name: dbml-atlas
 description: >
   Render a DBML schema into an interactive HTML viewer and a static SVG poster.
-  Zero dependencies — Python standard library only.
+  Zero dependencies
 
 branding:
   icon: database
