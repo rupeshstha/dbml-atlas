@@ -12,10 +12,10 @@ requires-python = ">=3.9"
 keywords = ["dbml", "database", "diagram", "erd", "schema", "visualization", "documentation", "postgres", "mysql"]
 
 [project.urls]
-Homepage = "https://github.com/rupeshstha/dbml-viewer"
-Repository = "https://github.com/rupeshstha/dbml-viewer"
-Issues = "https://github.com/rupeshstha/dbml-viewer/issues"
-Changelog = "https://github.com/rupeshstha/dbml-viewer/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/rupeshstha/dbml-atlas"
+Repository = "https://github.com/rupeshstha/dbml-atlas"
+Issues = "https://github.com/rupeshstha/dbml-atlas/issues"
+Changelog = "https://github.com/rupeshstha/dbml-atlas/blob/main/CHANGELOG.md"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",

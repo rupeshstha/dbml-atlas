@@ -4,7 +4,7 @@ Thanks for taking the time to contribute!
 
 ## Reporting bugs
 
-Open a [GitHub issue](https://github.com/rupeshstha/dbml-viewer/issues) and include:
+Open a [GitHub issue](https://github.com/rupeshstha/dbml-atlas/issues) and include:
 
 - The DBML input (or a minimal reproduction)
 - The command you ran
@@ -24,7 +24,7 @@ Open an issue with the label `enhancement`. Please check the [non-goals](#non-go
 ## Development setup
 
 ```bash
-git clone https://github.com/rupeshstha/dbml-viewer
+git clone https://github.com/rupeshstha/dbml-atlas
 cd dbml-atlas
 pip install -e ".[dev]"   # installs pytest + ruff in editable mode
 ```
